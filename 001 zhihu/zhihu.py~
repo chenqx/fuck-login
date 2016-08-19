@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Required
@@ -80,12 +81,7 @@ def isLogin():
     url = "https://www.zhihu.com/settings/profile"
     login_code = session.get(url, headers=headers, allow_redirects=False).status_code
     if login_code == 200:
-        detect_url="https://www.zhihu.com/question/following"
-        r=session.get(detect_url,headers=headers)
-        t=r.text
-        print t
         return True
-
     else:
         return False
 
@@ -133,16 +129,10 @@ try:
 except:
     pass
 
-def checkInfo():
-    detect_url="https://www.zhihu.com/question/following"
-    r=requests.get(detect_url)
-    print r.text
-	
 
 if __name__ == '__main__':
     if isLogin():
         print('您已经登录')
-        #checkInfo()
     else:
         account = input('请输入你的用户名\n>  ')
         secret = input("请输入你的密码\n>  ")

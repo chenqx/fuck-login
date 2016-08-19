@@ -50,8 +50,10 @@ def login(telephone, password):
         "telephone": telephone
     }
     log = session.post(login_url, data=postdata, headers=headers)
+    print log.text
     log = session.get("https://xueqiu.com/setting/user", headers=headers)
     pa = r'"profile":"/(.*?)","screen_name":"(.*?)"'
+    print log.text
     res = re.findall(pa, log.text)
     if res == []:
         print("登录失败，请检查你的手机号和密码输入是否正确")
@@ -60,6 +62,6 @@ def login(telephone, password):
 
 
 if __name__ == '__main__':
-    telephone = "你的手机号"
-    password = "你的密码"
+    telephone = "13424281086"
+    password = "javalinux"
     login(telephone, password)
